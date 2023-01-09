@@ -1,7 +1,0 @@
-terraform.tfstate*
-terraform.tfvars
-credentials/harshal*
-credentials/terraform.json
-scripts/curlstuff.sh
-images/*
-.idea/*

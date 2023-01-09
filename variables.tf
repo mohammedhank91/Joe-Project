@@ -10,7 +10,7 @@ variable "region_zone" {
 
 variable "project" {
 	 description = "Name of GCE project"
-	 default     = "dummydefault"
+	 default     = "playground-s-11-689ba5fd"
 }
 
 variable "machine_type" {
@@ -24,17 +24,17 @@ variable "image" {
 
 variable "credentials_file_path" {
   description = "Path to the JSON file used to describe your account credentials"
-  default     = "credentials/account.json"
+  default     = "credentials/terraform.json"
 }
 
 variable "public_key_path" {
   description = "Path to file containing public key"
-  default     = "credentials/harshals_pub.txt"
+  default     = "credentials/keys.pub"
 }
 
 variable "private_key_path" {
   description = "Path to file containing private key"
-  default     = "credentials/harshals.ppk"
+  default     = "credentials/keys"
 }
 
 variable "install_script_src_path" {
@@ -64,4 +64,9 @@ variable "node_count" {
 variable "rs_proj_name" {
   description = "Name of the rancher project"
   default = "k8srancher"
+}
+
+variable "host"  {
+  description = "Host name of the rancher server"
+  default = "rancher-server"
 }

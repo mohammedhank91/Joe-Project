@@ -8,15 +8,23 @@ RANCHER_PROJECT_ID=$3;
 #
 # Installing Docker first 
 #
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
-apt-get install -y apt-transport-https ca-certificates
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
-apt-get update
-apt-cache policy docker-engine
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get update
 apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 apt-get update
-apt-get install -y docker-engine=1.12.3-0~trusty
+sudo apt install docker-ce -y
 
 service docker start
 docker run hello-world
